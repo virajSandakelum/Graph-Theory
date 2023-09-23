@@ -5,14 +5,17 @@ class LazyPrims:
         self.Nodes = nodes
         self.adj_list = {}
         self.nodeVisitingTrackingArray = {node: False for node in self.Nodes}
-        self.MST = []  
-        
+        self.MST = []
+        self.minimumSpanningTreeValue = 0
+
         for node in self.Nodes:
             self.adj_list[node] = []
+            
 
     def add_edge(self, u, v, weight):
         self.adj_list[u].append((v, weight))
         self.adj_list[v].append((u, weight))
+        
 
     def findMST(self):
         start_node = self.Nodes[0]
@@ -20,38 +23,30 @@ class LazyPrims:
 
         priority_queue = []
 
-        for neighbor, weight in self.adj_list[start_node]:
-            heapq.heappush(priority_queue, (weight, start_node, neighbor))
-        
-        print(priority_queue)
-        
+        for to_node, cost in self.adj_list[start_node]:
+            heapq.heappush(priority_queue, (cost, start_node, to_node))
 
-        # Main loop for Prim's algorithm
         while priority_queue:
-            # Get the edge with the smallest weight
             weight, u, v = heapq.heappop(priority_queue)
 
-            # If both endpoints are already in MST, skip this edge
             if self.nodeVisitingTrackingArray[u] and self.nodeVisitingTrackingArray[v]:
                 continue
 
-            # Add the edge to the MST
             self.MST.append((u, v, weight))
+            self.minimumSpanningTreeValue += weight
 
-            # Mark the unvisited endpoint as visited
             if not self.nodeVisitingTrackingArray[u]:
                 self.nodeVisitingTrackingArray[u] = True
-                # Add edges from the newly visited node to the priority queue
-                for neighbor, weight in self.adj_list[u]:
+                for neighbor, cost in self.adj_list[u]:
                     if not self.nodeVisitingTrackingArray[neighbor]:
-                        heapq.heappush(priority_queue, (weight, u, neighbor))
+                        heapq.heappush(priority_queue, (cost, u, neighbor))
 
             if not self.nodeVisitingTrackingArray[v]:
                 self.nodeVisitingTrackingArray[v] = True
-                # Add edges from the newly visited node to the priority queue
-                for neighbor, weight in self.adj_list[v]:
+                for neighbor, cost in self.adj_list[v]:
                     if not self.nodeVisitingTrackingArray[neighbor]:
-                        heapq.heappush(priority_queue, (weight, v, neighbor))
+                        heapq.heappush(priority_queue, (cost, v, neighbor))
+                        
 
     def print_adj_list(self):
         for node in self.Nodes:
@@ -61,10 +56,11 @@ class LazyPrims:
         print("Minimum Spanning Tree:")
         for u, v, weight in self.MST:
             print(f"Edge: {u} - {v}, Weight: {weight}")
+        
+        print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+
 
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
-lazyMST = LazyPrims(nodes)
-
 all_edges = [
     ("0", "1", 10),
     ("0", "2", 1),
@@ -81,6 +77,8 @@ all_edges = [
     ("5", "6", 6),
     ("6", "7", 12),
 ]
+
+lazyMST = LazyPrims(nodes)
 
 for u, v, weight in all_edges:
     lazyMST.add_edge(u, v, weight)
