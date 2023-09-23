@@ -14,4 +14,13 @@ class AdjacencyMatrix:
             print(row)
 
 
+adj_matrix = AdjacencyMatrix(5, True)
 
+adj_matrix.add_edge(0, 1)
+adj_matrix.add_edge(0, 2)
+adj_matrix.add_edge(1, 3)
+adj_matrix.add_edge(1, 4)
+adj_matrix.add_edge(2, 3)
+adj_matrix.add_edge(3, 4)
+
+adj_matrix.print_adj_matrix()
