@@ -75,35 +75,50 @@ class EagerPrimsMatrix:
             print(f"Edge: {u} - {v}, Weight: {weight}")
 
         print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+        
+        
+def run_eager_prims_matrix(nodes, all_edges):
+    eagerMST = EagerPrimsMatrix(len(nodes), False)
 
-nodes = list(range(8)) 
+    for source, destination, weight in all_edges:
+        eagerMST.add_edge(source, destination, weight)
 
-all_edges = [
-    (0, 1, 10),
-    (0, 2, 1),
-    (0, 3, 4),
-    (1, 4, 0),
-    (1, 2, 3),
-    (2, 5, 8),
-    (2, 3, 2),
-    (3, 6, 7),
-    (3, 5, 2),
-    (4, 7, 8),
-    (4, 5, 1),
-    (5, 7, 9),
-    (5, 6, 6),
-    (6, 7, 12),
-]
+    start_time = time.time()
+    eagerMST.findMST()
+    end_time = time.time()
 
-eagerMST = EagerPrimsMatrix(len(nodes), False)
+    return end_time - start_time
 
-start_time = time.time()
 
-for source, destination, weight in all_edges:
-    eagerMST.add_edge(source, destination, weight)
 
-eagerMST.findMST()
-eagerMST.print_mst_edges()
-end_time = time.time()
+# nodes = list(range(8)) 
 
-print(f"Runtime: {end_time - start_time:.6f} seconds")
+# all_edges = [
+#     (0, 1, 10),
+#     (0, 2, 1),
+#     (0, 3, 4),
+#     (1, 4, 0),
+#     (1, 2, 3),
+#     (2, 5, 8),
+#     (2, 3, 2),
+#     (3, 6, 7),
+#     (3, 5, 2),
+#     (4, 7, 8),
+#     (4, 5, 1),
+#     (5, 7, 9),
+#     (5, 6, 6),
+#     (6, 7, 12),
+# ]
+
+# eagerMST = EagerPrimsMatrix(len(nodes), False)
+
+# start_time = time.time()
+
+# for source, destination, weight in all_edges:
+#     eagerMST.add_edge(source, destination, weight)
+
+# eagerMST.findMST()
+# eagerMST.print_mst_edges()
+# end_time = time.time()
+
+# print(f"Runtime: {end_time - start_time:.6f} seconds")

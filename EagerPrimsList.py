@@ -71,32 +71,46 @@ class EagerPrimsList:
         print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
 
-nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
+def run_eager_prims_list(nodes, all_edges):
+    eagerMST = EagerPrimsList(nodes)
 
-all_edges = [
-    ("0", "1", 10),
-    ("0", "2", 1),
-    ("0", "3", 4),
-    ("1", "4", 0),
-    ("1", "2", 3),
-    ("2", "5", 8),
-    ("2", "3", 2),
-    ("3", "6", 7),
-    ("3", "5", 2),
-    ("4", "7", 8),
-    ("4", "5", 1),
-    ("5", "7", 9),
-    ("5", "6", 6),
-    ("6", "7", 12),
-]
+    start_time = time.time()
+    for u, v, weight in all_edges:
+        eagerMST.add_edge(u, v, weight)
 
-eagerMST = EagerPrimsList(nodes)
+    # eagerMST.print_adj_list()
+    end_time = time.time()
 
-start_time = time.time()
-for u, v, weight in all_edges:
-    eagerMST.add_edge(u, v, weight)
+    return end_time - start_time
 
-eagerMST.print_adj_list()
-end_time = time.time()
 
-print(f"Runtime: {end_time - start_time:.6f} seconds")
+
+# nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
+
+# all_edges = [
+#     ("0", "1", 10),
+#     ("0", "2", 1),
+#     ("0", "3", 4),
+#     ("1", "4", 0),
+#     ("1", "2", 3),
+#     ("2", "5", 8),
+#     ("2", "3", 2),
+#     ("3", "6", 7),
+#     ("3", "5", 2),
+#     ("4", "7", 8),
+#     ("4", "5", 1),
+#     ("5", "7", 9),
+#     ("5", "6", 6),
+#     ("6", "7", 12),
+# ]
+
+# eagerMST = EagerPrimsList(nodes)
+
+# start_time = time.time()
+# for u, v, weight in all_edges:
+#     eagerMST.add_edge(u, v, weight)
+
+# eagerMST.print_adj_list()
+# end_time = time.time()
+
+# print(f"Runtime: {end_time - start_time:.6f} seconds")
