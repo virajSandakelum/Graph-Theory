@@ -50,13 +50,11 @@ class KruskalAlgoMatrix:
         self.minimumSpanningTreeValue = sum(edge[2] for edge in self.MST)
 
 
-def run_kruskal_matrix(num_vertices):
-    random_edges = [(random.randint(0, num_vertices-1), random.randint(0, num_vertices-1), random.randint(1, 100)) for _ in range(num_vertices)]
+def run_kruskal_matrix(nodes,all_edges):
 
+    adj_matrix = KruskalAlgoMatrix(len(nodes), False)
 
-    adj_matrix = KruskalAlgoMatrix(num_vertices, False)
-
-    for source, destination, weight in random_edges:
+    for source, destination, weight in all_edges:
         adj_matrix.add_edge(source, destination, weight)
 
     start_time = time.time()
@@ -64,21 +62,8 @@ def run_kruskal_matrix(num_vertices):
     end_time = time.time()
     
     runtime = end_time - start_time
-    print(f"Minimum Spanning Tree Value: {adj_matrix.minimumSpanningTreeValue}")
+    # print(f"Minimum Spanning Tree Value Adjacency Matrix: {adj_matrix.minimumSpanningTreeValue}")
     
     return runtime
 
-# vertices = [1000, 2000, 3000, 4000, 5000]
-# runtimes = []
 
-# for num_vertices in vertices:
-#     runtime = run_kruskal_matrix(num_vertices)
-#     runtimes.append(runtime)
-#     print(f"Runtime for {num_vertices} nodes: {runtime:.6f} seconds")
-
-# plt.plot(vertices, runtimes, marker='o', linestyle='-')
-# plt.title('Kruskal\'s Algorithm Runtime vs. Number of Vertices')
-# plt.xlabel('Number of Vertices')
-# plt.ylabel('Runtime (seconds)')
-# plt.grid(True)
-# plt.show()

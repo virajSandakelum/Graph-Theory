@@ -74,28 +74,3 @@ def run_lazy_prims_matrix(nodes,all_edges):
 
     return end_time - start_time
 
-# nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
-# all_edges = [
-#     ("0", "1", 10),
-#     ("0", "2", 1),
-#     ("0", "3", 4),
-#     ("1", "4", 0),
-#     ("1", "2", 3),
-#     ("2", "5", 8),
-#     ("2", "3", 2),
-#     ("3", "6", 7),
-#     ("3", "5", 2),
-#     ("4", "7", 8),  
-#     ("4", "5", 1),
-#     ("5", "7", 9),
-#     ("5", "6", 6),
-#     ("6", "7", 12),
-# ]
-
-# lazyMST = LazyPrimsMatrix(len(nodes), False)
-
-# for u, v, weight in all_edges:
-#     lazyMST.add_edge(int(u), int(v), weight)
-
-# lazyMST.print_adj_matrix()
-# lazyMST.print_MST()

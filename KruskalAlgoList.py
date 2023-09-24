@@ -16,17 +16,17 @@ class KruskalAlgoList:
             self.adj_list[node] = []
 
     def add_edge(self, source, destination, weight):
-        self.adj_list[source].append(destination)
-        self.adj_list[destination].append(source)
+        self.adj_list[source].append((destination, weight))
+        self.adj_list[destination].append((source, weight))
         self.all_edges.append((source, destination, weight))
 
     def initiateParent(self, node):
         self.parent[node] = node
 
     def findParent(self, node):
-        if self.parent[node] == node:
-            return node
-        return self.findParent(self.parent[node])
+        while node != self.parent[node]:
+            node = self.parent[node]
+        return node
 
     def union(self, source, destination):
         self.parent[self.findParent(source)] = self.findParent(destination)
@@ -57,12 +57,10 @@ class KruskalAlgoList:
             print(f"{node} -> {self.adj_list[node]}")
 
 
-def run_kruskal_list(num_vertices):
-    random_edges = [(random.randint(0, num_vertices-1), random.randint(0, num_vertices-1), random.randint(1, 100)) for _ in range(num_vertices)]
+def run_kruskal_list(nodes, all_edges):
+    adj_list = KruskalAlgoList(nodes)
 
-    adj_list = KruskalAlgoList(list(range(num_vertices)))
-
-    for source, destination, weight in random_edges:
+    for source, destination, weight in all_edges:
         adj_list.add_edge(source, destination, weight)
 
     start_time = time.time()
@@ -70,6 +68,4 @@ def run_kruskal_list(num_vertices):
     end_time = time.time()
 
     runtime = end_time - start_time
-    print(f"Minimum Spanning Tree Value: {adj_list.minimumSpanningTreeValue}")    
     return runtime
-

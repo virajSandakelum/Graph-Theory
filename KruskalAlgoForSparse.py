@@ -12,16 +12,16 @@ runtimes_matrix = []
 common_vertices = list(range(vertices))
 
 for num_edges in num_edges_list:
+    print("\n")
     random_edges = [(random.choice(common_vertices), random.choice(common_vertices), random.randint(1, 100)) for _ in range(num_edges)]
 
-    runtime_list = run_kruskal_list(vertices)
+    runtime_list = run_kruskal_list(common_vertices,random_edges)
     runtimes_list.append(runtime_list)
     print(f"Runtime for Kruskal's Algorithm with lists (V={vertices}, E={num_edges}): {runtime_list:.6f} seconds")
 
-    runtime_matrix = run_kruskal_matrix(vertices)
+    runtime_matrix = run_kruskal_matrix(common_vertices,random_edges)
     runtimes_matrix.append(runtime_matrix)
     print(f"Runtime for Kruskal's Algorithm with matrices (V={vertices}, E={num_edges}): {runtime_matrix:.6f} seconds")
-
 
 plt.plot(num_edges_list, runtimes_list, marker='o', linestyle='-', label="Kruskal's Algorithm with Lists")
 plt.plot(num_edges_list, runtimes_matrix, marker='o', linestyle='-', label="Kruskal's Algorithm with Matrices")

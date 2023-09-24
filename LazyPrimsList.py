@@ -72,6 +72,8 @@ def run_lazy_prims_list(nodes, all_edges):
     start_time = time.time()
     lazyMST.findMST()
     end_time = time.time()
+    
+    # print(f"\nMinimum Spanning Tree Value: {lazyMST.minimumSpanningTreeValue}")
 
     return end_time - start_time
 

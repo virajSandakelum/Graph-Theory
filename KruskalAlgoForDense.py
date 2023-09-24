@@ -12,6 +12,7 @@ runtimes_matrix = []
 common_vertices = list(range(vertices))
 
 for num_edges in num_edges_list:
+    print("\n")
     random_edges = [(random.choice(common_vertices), random.choice(common_vertices), random.randint(1, 100)) for _ in range(num_edges)]
 
     runtime_list = run_kruskal_list(vertices)

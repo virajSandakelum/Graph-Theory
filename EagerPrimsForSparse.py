@@ -16,15 +16,13 @@ common_vertices = list(range(vertices))
 nodes = list(map(str, range(5000)))
 
 for num_edges in num_edges_list:
-    random_edges = [(str(random.randint(0, 4999)), str(random.randint(0, 4999)), random.randint(1, 100)) for _ in range(num_edges)]
+    print("\n")
+    random_edges = [(random.randint(0, 4999), random.randint(0, 4999), random.randint(1, 100)) for _ in range(num_edges)]
 
     runtime_lazy_prims = run_eager_prims_list(nodes, random_edges)
     runtimes_list.append(runtime_lazy_prims)
     print(f"Runtime for Eager Prim's Algorithm with lists (V={vertices}, E={num_edges}): {runtime_lazy_prims:.6f} seconds")
     
-for num_edges in num_edges_list:
-    random_edges = [(random.randint(0, 4999), random.randint(0, 4999), random.randint(1, 100)) for _ in range(num_edges)]
-
     runtime_lazy_prims = run_eager_prims_matrix(nodes, random_edges)
     runtimes_matrix.append(runtime_lazy_prims)
     print(f"Runtime for Eager Prim's Algorithm with matrices (V={vertices}, E={num_edges}): {runtime_lazy_prims:.6f} seconds")
