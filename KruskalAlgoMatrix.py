@@ -46,14 +46,15 @@ class KruskalAlgoMatrix:
         self.minimumSpanningTreeValue = sum(edge[2] for edge in self.MST)
 
     def printMST(self):
+        print("\nGraph (adjacency matrix):")
         for row in self.adj_matrix:
             print(row)
         
-        print("=========== Minimum Spanning Tree ===========")
+        print("\nMinimum Spanning Tree")
         for edge in self.MST:
             print(f"{edge[0]} -> {edge[1]} : {edge[2]}")
         
-        print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+        print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
 # Define nodes and edges
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]

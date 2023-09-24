@@ -49,7 +49,7 @@ class KruskalAlgoList:
         return minimumSpanningTree
     
     def printGraph(self):
-        print("=========== Graph ===========")
+        print("\nGraph(adjacency list):")
         for node in self.Nodes:
             print(f"{node} -> {self.adj_list[node]}")
 
@@ -79,8 +79,8 @@ for source, destination, weight in all_edges:
 minimumSpanningTree = graph.findKruskal()
 graph.printGraph()
 
-print("=========== Minimum Spanning Tree ===========")
+print("\nMinimum Spanning Tree")
 for source, destination, weight in minimumSpanningTree:
     print(f"Edge: {source} - {destination}, Weight: {weight}")
 
-print(f"Minimum Spanning Tree Value: {graph.minimumSpanningTreeValue}")
+print(f"\nMinimum Spanning Tree Value: {graph.minimumSpanningTreeValue}")

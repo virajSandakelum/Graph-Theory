@@ -19,6 +19,7 @@ class AdjacencyList:
         self.adj_list[v].append(u)
 
     def print_adj_list(self):
+        print("\nAdjacency List")
         for node in self.Nodes:
             print(node,"->", self.adj_list[node])
                 

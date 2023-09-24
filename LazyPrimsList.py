@@ -49,15 +49,16 @@ class LazyPrimsList:
                         
 
     def print_adj_list(self):
-        # for node in self.Nodes:
-        #     print(node, "->", self.adj_list[node])
+        print("\nGraph(adjacency list):")
+        for node in self.Nodes:
+            print(node, "->", self.adj_list[node])
 
         self.findMST()
-        print("=========== Minimum Spanning Tree ===========")
+        print("\nMinimum Spanning Tree")
         for u, v, weight in self.MST:
             print(f"Edge: {u} - {v}, Weight: {weight}")
-        
-        print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+            
+        print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
 
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]

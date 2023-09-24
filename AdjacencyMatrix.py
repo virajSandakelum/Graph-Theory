@@ -10,6 +10,7 @@ class AdjacencyMatrix:
             self.adj_matrix[destination][source] = weight
 
     def print_adj_matrix(self):
+        print("\nAdjacency Matrix")
         for row in self.adj_matrix:
             print(row)
 

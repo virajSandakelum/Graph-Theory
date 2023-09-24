@@ -44,16 +44,17 @@ class LazyPrimsMatrix:
                     heapq.heappush(priority_queue, (self.adj_matrix[v][neighbor], v, neighbor))
 
     def print_adj_matrix(self):
+        print("\nAdjacency Matrix:")
         for row in self.adj_matrix:
             print(row)
 
     def print_MST(self):
         self.findMST()
-        print("=========== Minimum Spanning Tree ===========")
+        print("\nMinimum Spanning Tree")
         for u, v, weight in self.MST:
             print(f"Edge: {u} - {v}, Weight: {weight}")
 
-        print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+        print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
 
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
