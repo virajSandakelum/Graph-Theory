@@ -1,6 +1,5 @@
 import heapq
 
-
 class LazyPrimsMatrix:
     def __init__(self, num_vertices, is_directed):
         self.num_vertices = num_vertices
@@ -57,7 +56,6 @@ class LazyPrimsMatrix:
         print(f"Minimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
 
-# Define nodes and edges
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
 all_edges = [
     ("0", "1", 10),
