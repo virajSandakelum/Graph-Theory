@@ -1,4 +1,5 @@
 import heapq
+import time
 
 class IndexedPriorityQueue:
     def __init__(self):
@@ -75,7 +76,6 @@ class EagerPrimsMatrix:
 
         print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
-
 nodes = list(range(8)) 
 
 all_edges = [
@@ -97,8 +97,13 @@ all_edges = [
 
 eagerMST = EagerPrimsMatrix(len(nodes), False)
 
+start_time = time.time()
+
 for source, destination, weight in all_edges:
     eagerMST.add_edge(source, destination, weight)
 
 eagerMST.findMST()
 eagerMST.print_mst_edges()
+end_time = time.time()
+
+print(f"Runtime: {end_time - start_time:.6f} seconds")

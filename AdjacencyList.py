@@ -1,11 +1,3 @@
-# adj_list = {
-#     "A": [],
-#     "B": [],
-#     "C": [],
-#     "D": [],
-#     "E": [],
-# }
-
 class AdjacencyList:
     def __init__(self, nodes):
         self.Nodes = nodes

@@ -1,5 +1,6 @@
 import heapq
 from collections import defaultdict
+import time
 
 class IndexedPriorityQueue:
     def __init__(self):
@@ -97,7 +98,11 @@ all_edges = [
 
 eagerMST = EagerPrimsList(nodes)
 
+start_time = time.time()
 for u, v, weight in all_edges:
     eagerMST.add_edge(u, v, weight)
 
 eagerMST.print_adj_list()
+end_time = time.time()
+
+print(f"Runtime: {end_time - start_time:.6f} seconds")

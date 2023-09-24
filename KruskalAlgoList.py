@@ -1,4 +1,5 @@
 from queue import PriorityQueue
+import time
 
 class KruskalAlgoList:
     def __init__(self, nodes):
@@ -47,12 +48,13 @@ class KruskalAlgoList:
                 self.union(source, destination)
 
         return minimumSpanningTree
-    
+
     def printGraph(self):
         print("\nGraph(adjacency list):")
         for node in self.Nodes:
             print(f"{node} -> {self.adj_list[node]}")
 
+# Define your nodes and edges here
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
 all_edges = [
     ("0", "1", 10),
@@ -73,6 +75,8 @@ all_edges = [
 
 graph = KruskalAlgoList(nodes)
 
+start_time = time.time()
+
 for source, destination, weight in all_edges:
     graph.add_edge(source, destination, weight)
 
@@ -84,3 +88,7 @@ for source, destination, weight in minimumSpanningTree:
     print(f"Edge: {source} - {destination}, Weight: {weight}")
 
 print(f"\nMinimum Spanning Tree Value: {graph.minimumSpanningTreeValue}")
+
+end_time = time.time()
+runtime = end_time - start_time
+print(f"Runtime: {runtime} seconds")

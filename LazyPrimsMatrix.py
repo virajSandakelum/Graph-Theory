@@ -1,4 +1,5 @@
 import heapq
+import time
 
 class LazyPrimsMatrix:
     def __init__(self, num_vertices, is_directed):
@@ -49,13 +50,16 @@ class LazyPrimsMatrix:
             print(row)
 
     def print_MST(self):
+        start_time = time.time()
         self.findMST()
+        end_time = time.time()
+
         print("\nMinimum Spanning Tree")
         for u, v, weight in self.MST:
             print(f"Edge: {u} - {v}, Weight: {weight}")
 
         print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
-
+        print(f"Runtime: {end_time - start_time:.6f} seconds")
 
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
 all_edges = [
@@ -81,5 +85,4 @@ for u, v, weight in all_edges:
     lazyMST.add_edge(int(u), int(v), weight)
 
 lazyMST.print_adj_matrix()
-
 lazyMST.print_MST()

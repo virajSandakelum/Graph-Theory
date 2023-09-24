@@ -1,3 +1,5 @@
+import time
+
 class KruskalAlgoMatrix:
     def __init__(self, num_vertices, is_directed):
         self.num_vertices = num_vertices
@@ -56,8 +58,8 @@ class KruskalAlgoMatrix:
         
         print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
 
-# Define nodes and edges
-nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
+
+nodes = list(range(8))
 all_edges = [
     (0, 1, 10),
     (0, 2, 1),
@@ -75,6 +77,8 @@ all_edges = [
     (6, 7, 12),
 ]
 
+start_time = time.time()
+
 adj_matrix = KruskalAlgoMatrix(len(nodes), False)
 
 for source, destination, weight in all_edges:
@@ -82,3 +86,7 @@ for source, destination, weight in all_edges:
 
 adj_matrix.findKruskal()
 adj_matrix.printMST()
+
+end_time = time.time()
+runtime = end_time - start_time
+print(f"\nRuntime: {runtime} seconds")

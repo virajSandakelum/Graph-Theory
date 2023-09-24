@@ -1,4 +1,5 @@
 import heapq
+import time
 
 class LazyPrimsList:
     def __init__(self, nodes):
@@ -10,12 +11,10 @@ class LazyPrimsList:
 
         for node in self.Nodes:
             self.adj_list[node] = []
-            
 
     def add_edge(self, u, v, weight):
         self.adj_list[u].append((v, weight))
         self.adj_list[v].append((u, weight))
-        
 
     def findMST(self):
         start_node = self.Nodes[0]
@@ -46,19 +45,22 @@ class LazyPrimsList:
                 for neighbor, cost in self.adj_list[v]:
                     if not self.nodeVisitingTrackingArray[neighbor]:
                         heapq.heappush(priority_queue, (cost, v, neighbor))
-                        
 
     def print_adj_list(self):
         print("\nGraph(adjacency list):")
         for node in self.Nodes:
             print(node, "->", self.adj_list[node])
 
+        start_time = time.time()
         self.findMST()
+        end_time = time.time()
+
         print("\nMinimum Spanning Tree")
         for u, v, weight in self.MST:
             print(f"Edge: {u} - {v}, Weight: {weight}")
-            
+
         print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+        print(f"Runtime: {end_time - start_time:.6f} seconds")
 
 
 nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
