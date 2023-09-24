@@ -25,12 +25,6 @@ class IndexedPriorityQueue:
                 return from_node, to_node, cost
         raise KeyError("Dequeue from an empty priority queue")
 
-    def updatePQMinCost(self, from_node, to_node, new_cost):
-        if (from_node, to_node) in self.index:
-            cost, counter, _, _ = self.index[(from_node, to_node)]
-            if new_cost < cost:
-                self.index[(from_node, to_node)][0] = new_cost
-                heapq.heapify(self.pq)
 
 
 class EagerPrimsList:

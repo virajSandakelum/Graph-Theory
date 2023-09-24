@@ -1,4 +1,6 @@
 import time
+import random
+import matplotlib.pyplot as plt
 
 class KruskalAlgoMatrix:
     def __init__(self, num_vertices, is_directed):
@@ -47,46 +49,36 @@ class KruskalAlgoMatrix:
 
         self.minimumSpanningTreeValue = sum(edge[2] for edge in self.MST)
 
-    def printMST(self):
-        print("\nGraph (adjacency matrix):")
-        for row in self.adj_matrix:
-            print(row)
-        
-        print("\nMinimum Spanning Tree")
-        for edge in self.MST:
-            print(f"{edge[0]} -> {edge[1]} : {edge[2]}")
-        
-        print(f"\nMinimum Spanning Tree Value: {self.minimumSpanningTreeValue}")
+
+def run_kruskal_matrix(num_vertices):
+    random_edges = [(random.randint(0, num_vertices-1), random.randint(0, num_vertices-1), random.randint(1, 100)) for _ in range(num_vertices)]
 
 
-nodes = list(range(8))
-all_edges = [
-    (0, 1, 10),
-    (0, 2, 1),
-    (0, 3, 4),
-    (1, 4, 0),
-    (1, 2, 3),
-    (2, 5, 8),
-    (2, 3, 2),
-    (3, 6, 7),
-    (3, 5, 2),
-    (4, 7, 8),
-    (4, 5, 1),
-    (5, 7, 9),
-    (5, 6, 6),
-    (6, 7, 12),
-]
+    adj_matrix = KruskalAlgoMatrix(num_vertices, False)
 
-start_time = time.time()
+    for source, destination, weight in random_edges:
+        adj_matrix.add_edge(source, destination, weight)
 
-adj_matrix = KruskalAlgoMatrix(len(nodes), False)
+    start_time = time.time()
+    adj_matrix.findKruskal()
+    end_time = time.time()
+    
+    runtime = end_time - start_time
+    print(f"Minimum Spanning Tree Value: {adj_matrix.minimumSpanningTreeValue}")
+    
+    return runtime
 
-for source, destination, weight in all_edges:
-    adj_matrix.add_edge(source, destination, weight)
+# vertices = [1000, 2000, 3000, 4000, 5000]
+# runtimes = []
 
-adj_matrix.findKruskal()
-adj_matrix.printMST()
+# for num_vertices in vertices:
+#     runtime = run_kruskal_matrix(num_vertices)
+#     runtimes.append(runtime)
+#     print(f"Runtime for {num_vertices} nodes: {runtime:.6f} seconds")
 
-end_time = time.time()
-runtime = end_time - start_time
-print(f"\nRuntime: {runtime} seconds")
+# plt.plot(vertices, runtimes, marker='o', linestyle='-')
+# plt.title('Kruskal\'s Algorithm Runtime vs. Number of Vertices')
+# plt.xlabel('Number of Vertices')
+# plt.ylabel('Runtime (seconds)')
+# plt.grid(True)
+# plt.show()

@@ -1,5 +1,7 @@
 from queue import PriorityQueue
 import time
+import random
+import matplotlib.pyplot as plt
 
 class KruskalAlgoList:
     def __init__(self, nodes):
@@ -54,41 +56,20 @@ class KruskalAlgoList:
         for node in self.Nodes:
             print(f"{node} -> {self.adj_list[node]}")
 
-# Define your nodes and edges here
-nodes = ["0", "1", "2", "3", "4", "5", "6", "7"]
-all_edges = [
-    ("0", "1", 10),
-    ("0", "2", 1),
-    ("0", "3", 4),
-    ("1", "4", 0),
-    ("1", "2", 3),
-    ("2", "5", 8),
-    ("2", "3", 2),
-    ("3", "6", 7),
-    ("3", "5", 2),
-    ("4", "7", 8),
-    ("4", "5", 1),
-    ("5", "7", 9),
-    ("5", "6", 6),
-    ("6", "7", 12),
-]
 
-graph = KruskalAlgoList(nodes)
+def run_kruskal_list(num_vertices):
+    random_edges = [(random.randint(0, num_vertices-1), random.randint(0, num_vertices-1), random.randint(1, 100)) for _ in range(num_vertices)]
 
-start_time = time.time()
+    adj_list = KruskalAlgoList(list(range(num_vertices)))
 
-for source, destination, weight in all_edges:
-    graph.add_edge(source, destination, weight)
+    for source, destination, weight in random_edges:
+        adj_list.add_edge(source, destination, weight)
 
-minimumSpanningTree = graph.findKruskal()
-graph.printGraph()
+    start_time = time.time()
+    adj_list.findKruskal()
+    end_time = time.time()
 
-print("\nMinimum Spanning Tree")
-for source, destination, weight in minimumSpanningTree:
-    print(f"Edge: {source} - {destination}, Weight: {weight}")
+    runtime = end_time - start_time
+    print(f"Minimum Spanning Tree Value: {adj_list.minimumSpanningTreeValue}")    
+    return runtime
 
-print(f"\nMinimum Spanning Tree Value: {graph.minimumSpanningTreeValue}")
-
-end_time = time.time()
-runtime = end_time - start_time
-print(f"Runtime: {runtime} seconds")
