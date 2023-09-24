@@ -2,8 +2,6 @@ import random
 import matplotlib.pyplot as plt
 from KruskalAlgoList import KruskalAlgoList, run_kruskal_list
 from KruskalAlgoMatrix import KruskalAlgoMatrix, run_kruskal_matrix
-import math
-
 
 vertices = 5000
 num_edges_list = [1000**2, 2000**2, 3000**2, 4000**2, 5000**2]
@@ -29,7 +27,7 @@ plt.plot(num_edges_list, runtimes_list, marker='o', linestyle='-', label="Kruska
 plt.plot(num_edges_list, runtimes_matrix, marker='o', linestyle='-', label="Kruskal's Algorithm with Matrices")
 plt.xlabel("Number of Edges")
 plt.ylabel("Runtime (seconds)")
-plt.title("Kruskal's Algorithm Runtime vs. Number of Edges(Dense Graph)")
+plt.title("Kruskal's Algorithm Runtime vs. Number of Edges(Sparse Graph)")
 plt.legend()
 plt.grid(True)
 plt.show()

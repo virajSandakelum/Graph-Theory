@@ -5,7 +5,7 @@ from LazyPrimsList import LazyPrimsList, run_lazy_prims_list
 from LazyPrimsMatrix import LazyPrimsMatrix, run_lazy_prims_matrix
 
 vertices = 5000
-num_edges_list = [1000**2, 2000**2, 3000**2, 4000**2, 5000**2]
+num_edges_list = [1000, 2000, 3000, 4000, 5000]
 
 runtimes_list = []
 runtimes_matrix = []
